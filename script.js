@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const filterButtons = document.querySelectorAll('.filter-button');
