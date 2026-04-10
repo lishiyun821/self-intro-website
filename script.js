@@ -9,6 +9,10 @@ const modalClose = document.getElementById('modalClose');
 const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
 const modalActionButton = document.getElementById('modalActionButton');
+const emailModalOverlay = document.getElementById('emailModalOverlay');
+const emailModalClose = document.getElementById('emailModalClose');
+const copyEmailButton = document.getElementById('copyEmailButton');
+const closeEmailModal = document.getElementById('closeEmailModal');
 const aboutContact = document.getElementById('aboutContact');
 const aboutProjects = document.getElementById('aboutProjects');
 const techTrend = document.getElementById('techTrend');
@@ -71,7 +75,7 @@ filterButtons.forEach((button) => {
 
 function openModal(title, detail, url) {
   if (url && url.startsWith('mailto:')) {
-    alert('我的邮件地址是: ' + url.replace('mailto:', ''));
+    openEmailModal(url.replace('mailto:', ''));
     return;
   }
   modalTitle.textContent = title;
@@ -85,6 +89,17 @@ function closeModal() {
   modalOverlay.classList.remove('open');
   modalOverlay.setAttribute('aria-hidden', 'true');
   modalActionButton.dataset.url = '';
+}
+
+function openEmailModal(email) {
+  document.getElementById('emailAddress').textContent = email;
+  emailModalOverlay.classList.add('open');
+  emailModalOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeEmailModal() {
+  emailModalOverlay.classList.remove('open');
+  emailModalOverlay.setAttribute('aria-hidden', 'true');
 }
 
 cardActions.forEach((button) => {
@@ -111,6 +126,37 @@ modalActionButton.addEventListener('click', () => {
     window.open(url, '_blank');
   }
   closeModal();
+});
+
+// Email Modal Event Listeners
+emailModalClose.addEventListener('click', closeEmailModal);
+closeEmailModal.addEventListener('click', closeEmailModal);
+emailModalOverlay.addEventListener('click', (event) => {
+  if (event.target === emailModalOverlay) {
+    closeEmailModal();
+  }
+});
+
+copyEmailButton.addEventListener('click', () => {
+  const email = document.getElementById('emailAddress').textContent;
+  navigator.clipboard.writeText(email).then(() => {
+    copyEmailButton.textContent = '已复制!';
+    setTimeout(() => {
+      copyEmailButton.textContent = '复制邮件';
+    }, 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = email;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    copyEmailButton.textContent = '已复制!';
+    setTimeout(() => {
+      copyEmailButton.textContent = '复制邮件';
+    }, 2000);
+  });
 });
 
 if (aboutContact) {

@@ -210,6 +210,18 @@
     </div>
   </div>
 
+  <div class="email-modal-overlay" id="emailModalOverlay" aria-hidden="true">
+    <div class="email-modal" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle">
+      <button class="email-modal-close" id="emailModalClose" aria-label="关闭邮件窗口">×</button>
+      <h2 id="emailModalTitle">联系信息</h2>
+      <p id="emailModalContent">我的邮件地址是：<span id="emailAddress">xyyxyy0824@qq.com</span></p>
+      <div class="email-modal-actions">
+        <button class="button secondary" id="copyEmailButton" type="button">复制邮件</button>
+        <button class="button primary" id="closeEmailModal" type="button">关闭</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
