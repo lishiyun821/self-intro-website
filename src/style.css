@@ -22,13 +22,18 @@ body {
 .name {
   font-size: 3em;
   margin-bottom: 20px;
-  animation: fadeInUp 1s ease-out 0.5s both;
+  overflow: hidden;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 .description {
   font-size: 1.2em;
   margin-bottom: 40px;
   animation: fadeInUp 1.5s ease-out 1s both;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .sections {
@@ -43,20 +48,33 @@ section {
   padding: 20px;
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  animation: slideIn 2s ease-out 1.5s both;
+  animation: slideIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+section:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
   margin-top: 0;
+  animation: fadeIn 1s ease-out 2s both;
+  opacity: 0;
 }
 
 ul {
   list-style: none;
   padding: 0;
+  animation: fadeIn 1s ease-out 2.5s both;
+  opacity: 0;
 }
 
 li {
   margin: 10px 0;
+  animation: slideInLeft 1s ease-out 3s both;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
@@ -82,11 +100,40 @@ li {
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
   }
 }
 
