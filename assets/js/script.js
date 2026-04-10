@@ -49,11 +49,39 @@ document.addEventListener('DOMContentLoaded', () => {
 // Calculator function
 function calculate() {
     const input = document.getElementById('calc-input').value;
+    if (input.replace(/\s/g, '') === '114514+7891') {
+        showHiddenSpace();
+        return;
+    }
     try {
         const result = eval(input);
         document.getElementById('calc-result').textContent = '结果: ' + result;
     } catch (e) {
         document.getElementById('calc-result').textContent = '错误: 无效表达式';
+    }
+}
+
+function showHiddenSpace() {
+    // 创建隐藏空间遮罩
+    let hiddenDiv = document.getElementById('hidden-space');
+    if (!hiddenDiv) {
+        hiddenDiv = document.createElement('div');
+        hiddenDiv.id = 'hidden-space';
+        hiddenDiv.style.position = 'fixed';
+        hiddenDiv.style.top = '0';
+        hiddenDiv.style.left = '0';
+        hiddenDiv.style.width = '100vw';
+        hiddenDiv.style.height = '100vh';
+        hiddenDiv.style.background = 'url(assets/images/hidden.jpg) center center / cover no-repeat';
+        hiddenDiv.style.zIndex = '9999';
+        hiddenDiv.style.display = 'flex';
+        hiddenDiv.style.alignItems = 'center';
+        hiddenDiv.style.justifyContent = 'center';
+        hiddenDiv.innerHTML = '<h1 style="color:white;font-size:3rem;text-shadow:2px 2px 8px #000;">欢迎来到隐藏空间</h1><button id="close-hidden" style="position:absolute;top:30px;right:30px;font-size:1.5rem;padding:0.5rem 1rem;">关闭</button>';
+        document.body.appendChild(hiddenDiv);
+        document.getElementById('close-hidden').onclick = function() {
+            hiddenDiv.remove();
+        };
     }
 }
 
