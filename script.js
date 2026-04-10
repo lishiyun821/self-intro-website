@@ -70,6 +70,10 @@ filterButtons.forEach((button) => {
 });
 
 function openModal(title, detail, url) {
+  if (url && url.startsWith('mailto:')) {
+    alert('我的邮件地址是: ' + url.replace('mailto:', ''));
+    return;
+  }
   modalTitle.textContent = title;
   modalContent.textContent = detail;
   modalActionButton.dataset.url = url || '';
@@ -103,8 +107,6 @@ modalActionButton.addEventListener('click', () => {
   const url = modalActionButton.dataset.url;
   if (url && url.startsWith('#')) {
     document.querySelector(url).scrollIntoView({ behavior: 'smooth' });
-  } else if (url && url.startsWith('mailto:')) {
-    window.location.href = url;
   } else if (url) {
     window.open(url, '_blank');
   }
