@@ -2,64 +2,51 @@ import './style.css'
 import { gsap } from 'gsap'
 
 document.querySelector('#app').innerHTML = `
-  <div class="intro">
-    <h1 class="name">你好，我是小云云！</h1>
-    <p class="description">欢迎来到我的自我介绍网站。这里是关于我的故事和兴趣。</p>
-    <div class="sections">
-      <section class="about">
+  <div class="page">
+    <div class="hero">
+      <h1 class="title">你好，我是小云云</h1>
+      <p class="subtitle">这是我的自我介绍网站，欢迎来访。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
         <h2>关于我</h2>
-        <p>我热爱编程和设计，喜欢创造有趣的东西。</p>
-      </section>
-      <section class="skills">
+        <p>我热爱设计与编程，喜欢把创意变成漂亮又流畅的页面。</p>
+      </div>
+      <div class="card">
         <h2>技能</h2>
         <ul>
-          <li>HTML/CSS/JS</li>
-          <li>React/Vue</li>
-          <li>Python</li>
+          <li>HTML / CSS / JavaScript</li>
+          <li>GSAP 动画</li>
+          <li>响应式页面设计</li>
         </ul>
-      </section>
-      <section class="contact">
-        <h2>联系我</h2>
+      </div>
+      <div class="card">
+        <h2>联系</h2>
         <p>Email: example@example.com</p>
-      </section>
+      </div>
     </div>
   </div>
 `
 
-// GSAP Animations
-const tl = gsap.timeline()
+gsap.set('.hero', { opacity: 0, y: 40 })
+gsap.set('.title', { opacity: 0, y: 20 })
+gsap.set('.subtitle', { opacity: 0, y: 20 })
+gsap.set('.card', { opacity: 0, y: 40, scale: 0.96 })
 
-// Set initial states
-gsap.set('.intro', { opacity: 0, y: 50 })
-gsap.set('.name', { opacity: 0, y: 30, scale: 0.8 })
-gsap.set('.description', { opacity: 0, y: 20 })
-gsap.set('.sections section', { opacity: 0, x: -100, rotationY: 15 })
-gsap.set('.sections h2', { opacity: 0, x: -30 })
-gsap.set('.sections p, .sections li', { opacity: 0, x: 30 })
+const timeline = gsap.timeline({ defaults: { duration: 0.8, ease: 'power3.out' } })
 
-// Animate sequence
-tl.to('.intro', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-  .to('.name', { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'back.out(1.7)' }, '-=0.5')
-  .to('.description', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.3')
-  .to('.sections section', { opacity: 1, x: 0, rotationY: 0, duration: 1, ease: 'power2.out', stagger: 0.2 }, '-=0.5')
-  .to('.sections h2', { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' }, '-=0.8')
-  .to('.sections p, .sections li', { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }, '-=0.6')
+timeline
+  .to('.hero', { opacity: 1, y: 0 })
+  .to('.title', { opacity: 1, y: 0 }, '-=0.4')
+  .to('.subtitle', { opacity: 1, y: 0 }, '-=0.5')
+  .to('.card', { opacity: 1, y: 0, scale: 1, stagger: 0.15 }, '-=0.4')
 
-// Hover animations
-document.querySelectorAll('section').forEach(section => {
-  section.addEventListener('mouseenter', () => {
-    gsap.to(section, { y: -10, scale: 1.05, duration: 0.3, ease: 'power2.out' })
+const cards = document.querySelectorAll('.card')
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    gsap.to(card, { y: -8, scale: 1.02, boxShadow: '0 20px 60px rgba(0,0,0,0.18)', duration: 0.35, ease: 'power3.out' })
   })
-  section.addEventListener('mouseleave', () => {
-    gsap.to(section, { y: 0, scale: 1, duration: 0.3, ease: 'power2.out' })
-  })
-})
-
-document.querySelectorAll('li').forEach(li => {
-  li.addEventListener('mouseenter', () => {
-    gsap.to(li, { x: 10, duration: 0.2, ease: 'power2.out' })
-  })
-  li.addEventListener('mouseleave', () => {
-    gsap.to(li, { x: 0, duration: 0.2, ease: 'power2.out' })
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, { y: 0, scale: 1, boxShadow: '0 12px 40px rgba(0,0,0,0.12)', duration: 0.35, ease: 'power3.out' })
   })
 })
