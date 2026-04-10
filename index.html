@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科技创作者社区</title>
+  <meta name="description" content="一个面向科技爱好者的创意展示网站，支持项目展示、功能过滤、主题切换和丝滑动画。" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">TEC</span>
+        <div>
+          <strong>科技创作者社区</strong>
+          <p>一个面向所有科技爱好者的创意展示与互动站点</p>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换深色/浅色主题">🌙</button>
+    </header>
+
+    <nav class="hero-nav" aria-label="页面导航">
+      <a href="#overview">首页</a>
+      <a href="#features">功能</a>
+      <a href="#projects">项目</a>
+      <a href="#insights">亮点</a>
+      <a href="#join">加入</a>
+    </nav>
+
+    <main>
+      <section class="hero section" id="overview">
+        <div class="hero-copy">
+          <p class="eyebrow">欢迎来到</p>
+          <h1>专为科技爱好者打造的创作空间</h1>
+          <p>这里有丰富项目展示、智能互动、无障碍设计和丝滑动画。适配所有设备，兼容键盘与屏幕阅读器，让每一位访客都能轻松浏览。</p>
+          <div class="hero-actions">
+            <a href="#projects" class="button primary">探索项目</a>
+            <a href="#join" class="button secondary">加入我们</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="glow-ring"></div>
+          <div class="hero-code">
+            <pre><code>const creator = {
+  interest: 'AI',
+  tools: ['Web', '硬件', '开源'],
+  style: '流畅动画'
+};</code></pre>
+          </div>
+          <div class="feature-card pulse-card">
+            <h2>动态特效</h2>
+            <p>渐变光效、浮动卡片、页面动画。</p>
+          </div>
+          <div class="feature-card mini-card">
+            <span>响应式</span>
+          </div>
+          <div class="feature-card mini-card secondary-card">
+            <span>易访问</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section feature-grid" id="features">
+        <div class="section-header">
+          <p class="eyebrow">特色功能</p>
+          <h2>面向所有人的科技创作体验</h2>
+        </div>
+        <div class="grid cards">
+          <article class="card reveal-card">
+            <h3>实时交互</h3>
+            <p>滚动、过滤、主题切换，所有互动都顺畅响应。</p>
+          </article>
+          <article class="card reveal-card">
+            <h3>无障碍设计</h3>
+            <p>语义结构、键盘导航和屏幕阅读器友好。</p>
+          </article>
+          <article class="card reveal-card">
+            <h3>多设备兼容</h3>
+            <p>手机、平板、桌面都能流畅访问与阅读。</p>
+          </article>
+          <article class="card reveal-card">
+            <h3>创作者展示</h3>
+            <p>展示项目、技术栈、文章和创意实验。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section projects" id="projects">
+        <div class="section-header">
+          <p class="eyebrow">作品展示</p>
+          <h2>科技项目与灵感案例</h2>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="项目过滤">
+          <button class="filter-button active" data-filter="all" type="button">全部</button>
+          <button class="filter-button" data-filter="web" type="button">Web</button>
+          <button class="filter-button" data-filter="ai" type="button">AI</button>
+          <button class="filter-button" data-filter="hardware" type="button">硬件</button>
+        </div>
+        <div class="grid project-list" id="projectList">
+          <article class="project-card reveal-card" data-category="web">
+            <h3>实验室仪表盘</h3>
+            <p>可视化数据、实时控制与智能监测。</p>
+          </article>
+          <article class="project-card reveal-card" data-category="ai">
+            <h3>语音助手原型</h3>
+            <p>结合自然语言、任务自动化与推荐系统。</p>
+          </article>
+          <article class="project-card reveal-card" data-category="hardware">
+            <h3>创客机器人</h3>
+            <p>传感器、机械臂与互动展示。</p>
+          </article>
+          <article class="project-card reveal-card" data-category="web">
+            <h3>技术博客模板</h3>
+            <p>文章列表、主题配色、评论与资源分享。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section insights" id="insights" aria-labelledby="insightsTitle">
+        <div class="section-header">
+          <p class="eyebrow">亮点</p>
+          <h2 id="insightsTitle">让每个人都能看懂、都能参与</h2>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card reveal-card">
+            <p class="eyebrow">兼容性</p>
+            <h3>所有人都能访问</h3>
+            <p>简洁语义化结构，支持键盘和屏幕阅读。</p>
+          </article>
+          <article class="insight-card reveal-card" aria-live="polite">
+            <p class="eyebrow">实时动画</p>
+            <h3>科技热度 <span id="techTrend">78%</span></h3>
+            <p>动态数据让页面更有活力，打造沉浸式体验。</p>
+          </article>
+          <article class="insight-card reveal-card">
+            <p class="eyebrow">创意空间</p>
+            <h3>项目与灵感共存</h3>
+            <p>展示你的实验成果、创作想法与技术故事。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section join" id="join">
+        <div class="section-header">
+          <p class="eyebrow">加入社区</p>
+          <h2>让你的科技创作被更多人看到</h2>
+        </div>
+        <div class="join-grid reveal-card">
+          <div>
+            <h3>分享灵感</h3>
+            <p>让项目、实验和笔记在这里被发现。</p>
+          </div>
+          <div>
+            <h3>展示专长</h3>
+            <p>AI、前端、硬件、开源项目都可呈现。</p>
+          </div>
+          <div>
+            <h3>结交同行</h3>
+            <p>通过联系信息、社交链接建立合作网络。</p>
+          </div>
+        </div>
+        <div class="cta-panel">
+          <p>准备好让你的科技创作闪耀吗？</p>
+          <a href="mailto:hello@techcreator.example.com" class="button primary">联系创作者</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="currentYear"></span> 科技创作者社区。适合所有访客浏览的创意科技网站。</p>
+      <p class="small-note">本网站面向所有设备与读者，支持键盘导航与现代动画。</p>
+    </footer>
+  </div>
+
+  <button class="scroll-top" id="scrollTopButton" aria-label="回到顶部">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
