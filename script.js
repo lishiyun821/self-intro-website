@@ -2,7 +2,15 @@ const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectList = document.getElementById('projectList');
+const cardActions = document.querySelectorAll('.card-action');
 const scrollTopButton = document.getElementById('scrollTopButton');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+const modalActionButton = document.getElementById('modalActionButton');
+const aboutContact = document.getElementById('aboutContact');
+const aboutProjects = document.getElementById('aboutProjects');
 const techTrend = document.getElementById('techTrend');
 const currentYear = document.getElementById('currentYear');
 
@@ -59,6 +67,66 @@ filterButtons.forEach((button) => {
       card.style.display = isVisible ? 'grid' : 'none';
     });
   });
+});
+
+function openModal(title, detail, url) {
+  modalTitle.textContent = title;
+  modalContent.textContent = detail;
+  modalActionButton.dataset.url = url || '';
+  modalOverlay.classList.add('open');
+  modalOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('open');
+  modalOverlay.setAttribute('aria-hidden', 'true');
+  modalActionButton.dataset.url = '';
+}
+
+cardActions.forEach((button) => {
+  button.addEventListener('click', () => {
+    const title = button.dataset.title;
+    const detail = button.dataset.detail;
+    const url = button.dataset.url;
+    openModal(title, detail, url);
+  });
+});
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (event) => {
+  if (event.target === modalOverlay) {
+    closeModal();
+  }
+});
+
+modalActionButton.addEventListener('click', () => {
+  const url = modalActionButton.dataset.url;
+  if (url && url.startsWith('#')) {
+    document.querySelector(url).scrollIntoView({ behavior: 'smooth' });
+  } else if (url && url.startsWith('mailto:')) {
+    window.location.href = url;
+  } else if (url) {
+    window.open(url, '_blank');
+  }
+  closeModal();
+});
+
+if (aboutContact) {
+  aboutContact.addEventListener('click', () => {
+    window.location.href = 'mailto:xyyxyy0824@qq.com';
+  });
+}
+
+if (aboutProjects) {
+  aboutProjects.addEventListener('click', () => {
+    document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && modalOverlay.classList.contains('open')) {
+    closeModal();
+  }
 });
 
 const headerLinks = document.querySelectorAll('.hero-nav a');

@@ -54,12 +54,29 @@
           <div class="feature-card pulse-card">
             <h2>动态特效</h2>
             <p>渐变光效、浮动卡片、页面动画。</p>
+            <button class="button secondary card-action" type="button" data-title="动态特效" data-detail="打开演示，体验更顺滑的页面动画与交互。" data-url="#features">打开</button>
           </div>
           <div class="feature-card mini-card">
             <span>响应式</span>
+            <button class="button secondary card-action" type="button" data-title="响应式布局" data-detail="查看手机、平板和桌面之间的自适应体验。" data-url="#features">打开</button>
           </div>
           <div class="feature-card mini-card secondary-card">
             <span>易访问</span>
+            <button class="button secondary card-action" type="button" data-title="易访问设计" data-detail="查看网站对键盘和屏幕阅读器的支持。" data-url="#about">打开</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-header">
+          <p class="eyebrow">关于我</p>
+          <h2>我是小云云，科技爱好者与创作者</h2>
+        </div>
+        <div class="about-content reveal-card">
+          <p>你好，我是小云云，热爱编程、人工智能和互动设计。这个网站是我的科技创作展示平台，展示了我的项目想法、设计灵感和未来探索方向。</p>
+          <div class="about-actions">
+            <button class="button primary" id="aboutContact" type="button">发邮件给我</button>
+            <button class="button secondary" id="aboutProjects" type="button">查看作品</button>
           </div>
         </div>
       </section>
@@ -104,18 +121,22 @@
           <article class="project-card reveal-card" data-category="web">
             <h3>实验室仪表盘</h3>
             <p>可视化数据、实时控制与智能监测。</p>
+            <button class="button secondary card-action" type="button" data-title="实验室仪表盘" data-detail="探索实时可视化数据、智能控制和监测视图。" data-url="#projects">打开</button>
           </article>
           <article class="project-card reveal-card" data-category="ai">
             <h3>语音助手原型</h3>
             <p>结合自然语言、任务自动化与推荐系统。</p>
+            <button class="button secondary card-action" type="button" data-title="语音助手原型" data-detail="感受语音对话与智能控件交互的演示。" data-url="#projects">打开</button>
           </article>
           <article class="project-card reveal-card" data-category="hardware">
             <h3>创客机器人</h3>
             <p>传感器、机械臂与互动展示。</p>
+            <button class="button secondary card-action" type="button" data-title="创客机器人" data-detail="查看机器人传感器和创客系统的互动演示。" data-url="#projects">打开</button>
           </article>
           <article class="project-card reveal-card" data-category="web">
             <h3>技术博客模板</h3>
             <p>文章列表、主题配色、评论与资源分享。</p>
+            <button class="button secondary card-action" type="button" data-title="技术博客模板" data-detail="查看博客布局和资源分享功能示例。" data-url="mailto:xyyxyy0824@qq.com">联系我</button>
           </article>
         </div>
       </section>
@@ -165,7 +186,7 @@
         </div>
         <div class="cta-panel">
           <p>准备好让你的科技创作闪耀吗？</p>
-          <a href="mailto:hello@techcreator.example.com" class="button primary">联系创作者</a>
+          <a href="mailto:xyyxyy0824@qq.com" class="button primary">联系创作者</a>
         </div>
       </section>
     </main>
@@ -177,6 +198,18 @@
   </div>
 
   <button class="scroll-top" id="scrollTopButton" aria-label="回到顶部">↑</button>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalContent">
+      <button class="modal-close" id="modalClose" aria-label="关闭详情">×</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalContent"></p>
+      <div class="modal-actions">
+        <button class="button primary" id="modalActionButton" type="button">前往</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
