@@ -12,7 +12,7 @@ const modalActionButton = document.getElementById('modalActionButton');
 const emailModalOverlay = document.getElementById('emailModalOverlay');
 const emailModalClose = document.getElementById('emailModalClose');
 const copyEmailButton = document.getElementById('copyEmailButton');
-const closeEmailModal = document.getElementById('closeEmailModal');
+const closeEmailModalButton = document.getElementById('closeEmailModal');
 const aboutContact = document.getElementById('aboutContact');
 const aboutProjects = document.getElementById('aboutProjects');
 const techTrend = document.getElementById('techTrend');
@@ -130,7 +130,7 @@ modalActionButton.addEventListener('click', () => {
 
 // Email Modal Event Listeners
 emailModalClose.addEventListener('click', closeEmailModal);
-closeEmailModal.addEventListener('click', closeEmailModal);
+closeEmailModalButton.addEventListener('click', closeEmailModal);
 emailModalOverlay.addEventListener('click', (event) => {
   if (event.target === emailModalOverlay) {
     closeEmailModal();
