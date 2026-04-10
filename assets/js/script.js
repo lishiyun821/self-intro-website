@@ -21,27 +21,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Skill cards stagger
-    gsap.from('.skill-card', {
+    // Tool links stagger
+    gsap.from('.tool-link', {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        stagger: 0.1,
+        scrollTrigger: {
+            trigger: '#tools',
+            start: 'top 80%'
+        }
+    });
+
+    // Features stagger
+    gsap.from('.feature', {
         opacity: 0,
         y: 30,
         duration: 0.8,
         stagger: 0.2,
         scrollTrigger: {
-            trigger: '#skills',
-            start: 'top 80%'
-        }
-    });
-
-    // Project cards stagger
-    gsap.from('.project-card', {
-        opacity: 0,
-        x: -50,
-        duration: 0.8,
-        stagger: 0.2,
-        scrollTrigger: {
-            trigger: '#projects',
+            trigger: '#features',
             start: 'top 80%'
         }
     });
 });
+
+// Calculator function
+function calculate() {
+    const input = document.getElementById('calc-input').value;
+    try {
+        const result = eval(input);
+        document.getElementById('calc-result').textContent = '结果: ' + result;
+    } catch (e) {
+        document.getElementById('calc-result').textContent = '错误: 无效表达式';
+    }
+}
+
+// Search function
+function search() {
+    const query = document.getElementById('search-input').value;
+    if (query) {
+        window.open('https://www.google.com/search?q=' + encodeURIComponent(query + ' 科技'), '_blank');
+    }
+}

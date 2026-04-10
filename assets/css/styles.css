@@ -74,22 +74,48 @@ h2 {
     font-size: 2rem;
 }
 
-.skills-grid, .projects-grid {
+.tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
-.skill-card, .project-card {
-    background: #f4f4f4;
+.tool-link {
+    background: #007bff;
+    color: white;
     padding: 1rem;
+    text-decoration: none;
     border-radius: 5px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: background 0.3s;
 }
 
-.skill-card:hover, .project-card:hover {
-    transform: translateY(-10px);
+.tool-link:hover {
+    background: #0056b3;
+}
+
+.feature {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.feature input, .feature button {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.feature button {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.feature button:hover {
+    background: #218838;
 }
 
 @media (max-width: 768px) {
